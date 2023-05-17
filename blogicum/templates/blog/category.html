@@ -1,11 +1,28 @@
 {% extends "base.html" %}
 {% block title %}
-  Публикации в категории - personal
+  Публикации в категории
 {% endblock %}
 {% block content %}
-    <main>
       <div class="container py-5">
-        <h1>Публикации в категории - personal</h1>
+        <h1>Публикации в категории - {{ category }}</h1>
+        <article>
+          <hr>
+          {% for product in index %}
+          <ul>
+            <li>Место: {{ product.location }}</li>
+            <li>Дата: {{ product.date }}</li>
+            <li>Категория: {{ product.category }}</li>
+            <br>
+            {{ product.text|truncatewords:10 }}
+            <br>
+            <a href="{% url 'blog:post_detail' product.id %}">
+              Читать полный текст
+            </a>
+          </ul>
+          {% if forloop.revcounter0 %}
+          <hr>
+          {% endif %}
+          {% endfor %}
+        </article>
       </div>
-    </main>
 {% endblock %}
