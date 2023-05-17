@@ -1,19 +1,19 @@
 {% extends "base.html" %}
 {% block title %}
-  Публикации в категории
+  Публикации в категории {{ category }}
 {% endblock %}
 {% block content %}
       <div class="container py-5">
         <h1>Публикации в категории - {{ category }}</h1>
         <article>
           <hr>
-          {% for product in index %}
+          {% for post in index %}
           <ul>
-            <li>Место: {{ product.location }}</li>
-            <li>Дата: {{ product.date }}</li>
-            <li>Категория: {{ product.category }}</li><br>
-            {{ product.text|truncatewords:10 }}<br>
-            <a href="{% url 'blog:post_detail' product.id %}">
+            <li>Место: {{ post.location }}</li>
+            <li>Дата: {{ post.date }}</li>
+            <li>Категория: {{ post.category }}</li><br>
+            {{ post.text|truncatewords:10 }}<br>
+            <a href="{% url 'blog:post_detail' post.id %}">
               Читать полный текст
             </a>
           </ul>
