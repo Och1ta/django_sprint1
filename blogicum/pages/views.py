@@ -11,4 +11,3 @@ def rules(request):
     """ Выводит информацию о правилах на проекте """
     template_name = 'pages/rules.html'
     return render(request, template_name)
-
