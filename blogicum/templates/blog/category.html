@@ -11,10 +11,8 @@
           <ul>
             <li>Место: {{ product.location }}</li>
             <li>Дата: {{ product.date }}</li>
-            <li>Категория: {{ product.category }}</li>
-            <br>
-            {{ product.text|truncatewords:10 }}
-            <br>
+            <li>Категория: {{ product.category }}</li><br>
+            {{ product.text|truncatewords:10 }}<br>
             <a href="{% url 'blog:post_detail' product.id %}">
               Читать полный текст
             </a>
