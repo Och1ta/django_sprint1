@@ -45,22 +45,26 @@ posts = [
 
 
 def index(request):
+    """ Вывести все посты """
     template_name = 'blog/index.html'
     context = {
-        'index': posts,
+        'index': posts[::-1]
     }
     return render(request, template_name, context)
 
 
-def post_detail(request, id):
+def post_detail(request, post_id):
+    """ Вывести пост по id """
     template_name = 'blog/detail.html'
     context = {
-        'blog': posts[id]
+        'post': posts[post_id],
+
     }
     return render(request, template_name, context)
 
 
 def category_posts(request, category_slug):
+    """ Вывести посты по названию категории """
     new_post = []
     for post in posts:
         if post['category'] == category_slug:
