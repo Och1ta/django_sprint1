@@ -3,18 +3,18 @@
   Публикация
 {% endblock %}
 {% block content %}
-  <main>
-      <div class="container py-5">
-        <article>
-          <ul>
-            <li>Место: {{ posts.location }}</li>
-            <li>Дата: {{ posts.date }}</li>
-            <li>Категория: {{ posts.category }}</li>
-            <br>
-            {{ posts.text }}
-            <br>
-          </ul>
-        </article>
-      </div>
-    </main>
+<article>
+  <ul>
+    <p>
+      <li>Место: {{ posts.location }}</li>
+      <li>Дата: {{ posts.date }}</li>
+      <li>Категория:
+        <a href="{% url 'blog:category_posts' posts.category %}">
+          {{ posts.category }}
+        </a>
+      </li>
+    </p>
+    {{ posts.text }}
+  </ul>
+</article>
 {% endblock %}

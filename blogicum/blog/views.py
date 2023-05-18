@@ -1,4 +1,7 @@
+from django.http import Http404
+
 from django.shortcuts import render
+
 
 posts = [
     {
@@ -54,21 +57,23 @@ def index(request):
 
 def post_detail(request, post_id):
     """ Вывести пост по id """
-    context = {
-        'posts': posts[post_id],
-
-    }
+    try:
+        context = {
+            'posts': posts[post_id],
+        }
+    except:
+        raise Http404("Поста с таким id нет")
     return render(request, 'blog/detail.html', context)
 
 
 def category_posts(request, category_slug):
     """ Вывести посты по названию категории """
-    new_post = []
-    for post in posts:
-        if post['category'] == category_slug:
-            new_post.append(post)
+    filtered_posts = [
+        post for post in posts
+        if post['category'] == category_slug
+    ]
     context = {
-        'posts': new_post,
+        'posts': filtered_posts,
         'category': category_slug,
     }
     return render(request, 'blog/category.html', context)
