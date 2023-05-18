@@ -23,7 +23,7 @@ wheels/
 pip-wheel-metadata/
 share/python-wheels/
 *.egg-info/
-blogicum/static_dev
+blogicum/static_dev/
 .installed.cfg
 *.egg
 MANIFEST
