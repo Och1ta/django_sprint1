@@ -3,11 +3,9 @@ from django.shortcuts import render
 
 def about(request):
     """ Выводит информацию о проекте """
-    template_name = 'pages/about.html'
-    return render(request, template_name)
+    return render(request, 'pages/about.html')
 
 
 def rules(request):
     """ Выводит информацию о правилах на проекте """
-    template_name = 'pages/rules.html'
-    return render(request, template_name)
+    return render(request, 'pages/rules.html')

@@ -46,21 +46,19 @@ posts = [
 
 def index(request):
     """ Вывести все посты """
-    template_name = 'blog/index.html'
     context = {
-        'index': posts[::-1]
+        'posts': reversed(posts)
     }
-    return render(request, template_name, context)
+    return render(request, 'blog/index.html', context)
 
 
 def post_detail(request, post_id):
     """ Вывести пост по id """
-    template_name = 'blog/detail.html'
     context = {
-        'post': posts[post_id],
+        'posts': posts[post_id],
 
     }
-    return render(request, template_name, context)
+    return render(request, 'blog/detail.html', context)
 
 
 def category_posts(request, category_slug):
@@ -69,9 +67,8 @@ def category_posts(request, category_slug):
     for post in posts:
         if post['category'] == category_slug:
             new_post.append(post)
-    template_name = 'blog/category.html'
     context = {
-        'index': new_post,
+        'posts': new_post,
         'category': category_slug,
     }
-    return render(request, template_name, context)
+    return render(request, 'blog/category.html', context)
