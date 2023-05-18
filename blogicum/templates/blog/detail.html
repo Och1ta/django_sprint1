@@ -6,15 +6,15 @@
 <article>
   <ul>
     <p>
-      <li>Место: {{ posts.location }}</li>
-      <li>Дата: {{ posts.date }}</li>
+      <li>Место: {{ post.location }}</li>
+      <li>Дата: {{ post.date }}</li>
       <li>Категория:
-        <a href="{% url 'blog:category_posts' posts.category %}">
-          {{ posts.category }}
+        <a href="{% url 'blog:category_posts' post.category %}">
+          {{ post.category }}
         </a>
       </li>
     </p>
-    {{ posts.text }}
+    {{ post.text }}
   </ul>
 </article>
 {% endblock %}

@@ -2,7 +2,6 @@ from django.http import Http404
 
 from django.shortcuts import render
 
-
 posts = [
     {
         'id': 0,
@@ -56,10 +55,10 @@ def index(request):
 
 
 def post_detail(request, post_id):
-    """ Вывести пост по id """
+    """ Вывести пост по id, иначе вывести ошибку"""
     try:
         context = {
-            'posts': posts[post_id],
+            'post': posts[post_id],
         }
     except IndexError:
         raise Http404("Поста с таким id нет.")
