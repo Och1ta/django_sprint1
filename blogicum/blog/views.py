@@ -61,7 +61,7 @@ def post_detail(request, post_id):
         context = {
             'posts': posts[post_id],
         }
-    except :
+    except IndexError:
         raise Http404("Поста с таким id нет.")
     return render(request, 'blog/detail.html', context)
 
