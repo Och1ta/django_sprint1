@@ -3,16 +3,5 @@
   Публикация
 {% endblock %}
 {% block content %}
-  <article>
-    <ul>
-      <li>Место: {{ post.location }}</li>
-      <li>Дата: {{ post.date }}</li>
-      <li>Категория:
-        <a href="{% url 'blog:category_posts' post.category %}">
-          {{ post.category }}
-        </a>
-      </li>
-      <p>{{ post.text }}</p>
-    </ul>
-  </article>
+  {% include "includes/article.html" %}
 {% endblock %}
