@@ -3,12 +3,11 @@
   Лента записей
 {% endblock %}
 {% block content %}
-<h1>Лента записей</h1>
-<hr>
-{% for post in posts %}
-<article>
-  <ul>
-    <p>
+  <h1>Лента записей</h1>
+    {% for post in posts %}
+  <article>
+    <hr>
+    <ul>
       <li>Место: {{ post.location }}</li>
       <li>Дата: {{ post.date }}</li>
       <li>Категория:
@@ -16,17 +15,11 @@
           {{ post.category }}
         </a>
       </li>
-    </p>
-    <p>
-      {{ post.text|truncatewords:10 }}
-    </p>
-    <a href="{% url 'blog:post_detail' post.id %}">
-      Читать полный текст
-    </a>
-  </ul>
-  {% if forloop.revcounter0 %}
-  <hr>
-  {% endif %}
-</article>
+      <p>{{ post.text|truncatewords:10 }}</p>
+      <a href="{% url 'blog:post_detail' post.id %}">
+        Читать полный текст
+      </a>
+    </ul>
+  </article>
 {% endfor %}
 {% endblock %}

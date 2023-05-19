@@ -3,9 +3,8 @@
   Публикация
 {% endblock %}
 {% block content %}
-<article>
-  <ul>
-    <p>
+  <article>
+    <ul>
       <li>Место: {{ post.location }}</li>
       <li>Дата: {{ post.date }}</li>
       <li>Категория:
@@ -13,8 +12,7 @@
           {{ post.category }}
         </a>
       </li>
-    </p>
-    {{ post.text }}
-  </ul>
-</article>
+      <p>{{ post.text }}</p>
+    </ul>
+  </article>
 {% endblock %}
