@@ -44,7 +44,7 @@ posts = [
     },
 ]
 
-dict_posts = {
+pk_posts = {
     post['id']: post for post in posts
 }
 
@@ -61,7 +61,7 @@ def post_detail(request, post_id):
     """ Вывести пост по id, иначе вывести ошибку"""
     try:
         context = {
-            'post': dict_posts[post_id]
+            'post': pk_posts[post_id]
         }
         return render(request, 'blog/detail.html', context)
     except KeyError:
