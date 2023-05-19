@@ -1,5 +1,4 @@
 from django.http import Http404
-
 from django.shortcuts import render
 
 posts = [
@@ -45,6 +44,10 @@ posts = [
     },
 ]
 
+dict_posts = {
+    post['id']: post for post in posts
+}
+
 
 def index(request):
     """ Вывести все посты """
@@ -58,11 +61,11 @@ def post_detail(request, post_id):
     """ Вывести пост по id, иначе вывести ошибку"""
     try:
         context = {
-            'post': posts[post_id],
+            'post': dict_posts[post_id]
         }
-    except IndexError:
+        return render(request, 'blog/detail.html', context)
+    except KeyError:
         raise Http404("Поста с таким id нет.")
-    return render(request, 'blog/detail.html', context)
 
 
 def category_posts(request, category_slug):
